@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/jobly-react/static/css/main.e14d9299.css",
+    "main.js": "/jobly-react/static/js/main.8db86733.js",
+    "static/js/787.0a16467a.chunk.js": "/jobly-react/static/js/787.0a16467a.chunk.js",
+    "index.html": "/jobly-react/index.html",
+    "main.e14d9299.css.map": "/jobly-react/static/css/main.e14d9299.css.map",
+    "main.8db86733.js.map": "/jobly-react/static/js/main.8db86733.js.map",
+    "787.0a16467a.chunk.js.map": "/jobly-react/static/js/787.0a16467a.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.e14d9299.css",
+    "static/js/main.8db86733.js"
+  ]
+}
