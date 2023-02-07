@@ -1,0 +1,28 @@
+.Company {
+    display: inline-block;
+    margin-top: 10px;
+    background-color: rgba(223, 220, 220, 0.8);
+    box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 3px 1px -2px rgba(0,0,0,0.12), 0 1px 5px 0 rgba(0,0,0,0.2);
+    width: 60%;
+    padding: 25px;
+}
+
+.Company li {
+    text-align: left;
+    list-style: none;
+}
+
+.Company > div {
+    display: inline-block;
+}
+
+.company-name {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #006D75;
+}
+
+.Company:hover {
+    background-color:rgba(241, 239, 239, 0.8);
+}
+

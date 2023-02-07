@@ -1,0 +1,39 @@
+.Job {
+    margin: auto;
+    margin-top: 10px;
+    background-color: rgba(223, 220, 220, 0.8);
+    box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 3px 1px -2px rgba(0,0,0,0.12), 0 1px 5px 0 rgba(0,0,0,0.2);
+    width: 60%;
+    padding: 25px;
+}
+
+.Job li {
+    list-style: none;
+}
+
+.Job button {
+    background-color: #EA7200;
+    font-display: uppercase;
+    color: black;
+    border-radius: 5px;
+    font-size: 1rem;
+    border: 0px;
+    font-weight: bold;
+    box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 3px 1px -2px rgba(0,0,0,0.12), 0 1px 5px 0 rgba(0,0,0,0.2);
+}
+
+.Job > div {
+    display: inline-block;
+}
+
+.info-container {
+    width: 90%;
+}
+.job-title {
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+.job-companyname {
+    font-weight: bold;
+    color: #006D75;
+}

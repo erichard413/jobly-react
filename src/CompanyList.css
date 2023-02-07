@@ -1,0 +1,13 @@
+.CompanyList {
+    text-align: center;
+}
+
+.CompanyList a {
+    text-decoration: none;
+    color: black;
+}
+
+.CompanyList a:hover {
+    text-decoration: none;
+    color: black;
+}
