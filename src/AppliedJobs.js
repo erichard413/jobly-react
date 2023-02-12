@@ -1,11 +1,29 @@
-import React, {useState} from 'react';
-import Job from './Job';
+import React, {useState, useEffect} from 'react';
 import {useAuth} from './hooks/useAuth';
+import {useUser} from './hooks/useUser';
 import {Navigate} from 'react-router-dom';
+import JoblyApi from './api';
+import Application from './Application';
 
 
-const JobsList = ({jobs}) => {
+const AppliedJobs = ({user}) => {
+
+    const {currentUser} = useUser();
+    const [jobs, setJobs] = useState();
     const {currentToken} = useAuth();
+
+    useEffect(()=>{
+        getJobs();
+    },[currentUser])
+
+    const getJobs = ()=>{
+        const fetchJobs = async()=>{
+        const res = await JoblyApi.getAppliedCompanies(user.username);
+        setJobs(res); 
+        }
+        fetchJobs();
+    } 
+
     // implement pagination
     const paginationNum = 7
     const [pageOffset, setPageOffset] = useState(paginationNum);
@@ -26,9 +44,9 @@ const JobsList = ({jobs}) => {
 
     return (
         <div className="JobsList">
-            {jobs.slice(0, pageOffset).map(j => <Job key={j.id} info={j}/>)}
+            {jobs ? jobs.slice(0, pageOffset).map(j => <Application key={j.job_id} info={j}/>): null}
         </div>
     )
 }
 
-export default JobsList;
+export default AppliedJobs;

@@ -1,4 +1,5 @@
 import axios from "axios";
+import jwt_decode from 'jwt-decode';
 
 const BASE_URL = process.env.REACT_APP_BASE_URL || "http://localhost:3001";
 
@@ -56,11 +57,59 @@ class JoblyApi {
     return res.jobs;
   }
 
+  static async searchCompanies(term) {
+    let res = await this.request(`companies?nameLike=${term}`);
+    return res.companies;
+  }
 
-  // obviously, you'll add a lot here ...
+  static async logIn(username, password) {
+      let res = await this.request('auth/token', {username, password}, 'post');
+      return res
+  }
+
+  static async getUser(username) {
+    let res = await this.request(`users/${username}`, {}, 'get');
+    return res;
+  }
+
+  static async editUser(formData) {
+    const {username, email, firstName, lastName} = formData
+    let res = await this.request(`users/${username}`, { email, firstName, lastName}, 'patch');
+    return res;
+  }
+
+  static async signUp(formData) {
+    let res = await this.request(`auth/register`, formData, 'post');
+    return res;
+  }
+
+  static async apply(username, jobid) {
+    let res = await this.request(`users/${username}/jobs/${jobid}`, {}, 'post');
+    return;
+  }
+  static async unApply(username, jobid) {
+    let res = await this.request(`users/${username}/jobs/${jobid}/unapply`, {}, 'delete');
+    return;
+  }
+  static async usernameValidator(username) {
+    let res = await this.request(`users/${username}/search`, {}, 'get');
+    return res.isValid;
+  }
+  static async getAppliedCompanies(username) {
+    let res = await this.request(`users/${username}/companies`,{}, 'get');
+    return res.companies;
+  }
+  static async editCompany(handle,formData) {
+    const {name, description, numEmployees} = formData;
+    let res = await this.request(`companies/${handle}`, {name, description, numEmployees}, 'patch');
+    return res.company;
+  }
+
 }
 
 // for now, put token ("testuser" / "password" on class)
-JoblyApi.token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZ" +
-    "SI6InRlc3R1c2VyIiwiaXNBZG1pbiI6ZmFsc2UsImlhdCI6MTU5ODE1OTI1OX0." +
-    "FtrMwBQwe6Ue-glIFgz_Nf8XxRT2YecFCiSpYL0fCXc";
+// JoblyApi.token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZ" +
+//     "SI6InRlc3R1c2VyIiwiaXNBZG1pbiI6ZmFsc2UsImlhdCI6MTU5ODE1OTI1OX0." +
+//     "FtrMwBQwe6Ue-glIFgz_Nf8XxRT2YecFCiSpYL0fCXc";
+
+export default JoblyApi;

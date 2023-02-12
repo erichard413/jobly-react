@@ -26,3 +26,9 @@
     background-color:rgba(241, 239, 239, 0.8);
 }
 
+.company-numEmployees {
+    padding-top: 10px;
+    font-size: .8rem;
+    font-style:italic;
+}
+

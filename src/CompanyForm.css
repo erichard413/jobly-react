@@ -1,24 +1,28 @@
-.Login {
-    text-align: center;
-    width: 100%;
-}
-
-
-.Login-container {
-    display: inline-block;
-    text-align: center;
+.CompanyForm {
+    margin: auto;
+   
     margin-top: 10px;
     background-color: rgba(223, 220, 220, 0.8);
     box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 3px 1px -2px rgba(0,0,0,0.12), 0 1px 5px 0 rgba(0,0,0,0.2);
-    width: 40%;
+    width: 60%;
     padding: 25px;
 }
 
-.Login h1 {
+.CompanyForm li {
+    text-align: left;
+    list-style: none;
+}
+
+.CompanyForm > div {
+    display: inline-block;
+}
+
+.CompanyForm h1 {
     font-weight: bold;
     color: #006D75;
 }
-.LoginForm-flash {
+
+.CompanyForm-error {
     color: rgb(151, 66, 66);
     font-size: .8rem;
     font-style: italic;

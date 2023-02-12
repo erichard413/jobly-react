@@ -5,11 +5,17 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import {BrowserRouter} from 'react-router-dom';
 import "bootstrap/dist/css/bootstrap.min.css";
+import { AuthProvider} from './hooks/useAuth';
+import { UserProvider} from './hooks/useUser';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <BrowserRouter>
-    <App />
+  <AuthProvider>
+    <UserProvider>
+      <App />
+    </UserProvider>
+  </AuthProvider>
   </BrowserRouter>
 );
 

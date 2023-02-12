@@ -1,5 +1,8 @@
 import React, {useState} from 'react';
 import './ProfileForm.css';
+import JoblyApi from './api';
+import {useUser} from './hooks/useUser';
+
 import {
     Button,
     Form,
@@ -9,10 +12,12 @@ import {
   } from 'reactstrap';
 
 const ProfileForm = ({user}) => {
+    const {currentUser, setCurrentUser} = useUser();
+
     const [formData, setFormData] = useState({
         username: user.username,
-        first_name: user.first_name,
-        last_name: user.last_name,
+        firstName: user.firstName,
+        lastName: user.lastName,
         email: user.email
     })
 
@@ -25,7 +30,17 @@ const ProfileForm = ({user}) => {
     }
 
     const handleSubmit = (e) => {
-        alert(`Unable to edit details for user ${user.username}. Not functionable yet.`)
+      e.preventDefault();
+        const editUser = async() => {
+        await JoblyApi.editUser(formData);
+        }
+        editUser();
+        setCurrentUser(data => ({
+          ...data,
+          firstName : formData.firstName,
+          lastName : formData.lastName,
+          email : formData.email
+        }))
     }
 
     return (
@@ -45,19 +60,19 @@ const ProfileForm = ({user}) => {
           </FormGroup>
           <FormGroup>
             <Label for="type">First Name:</Label>
-            <Input name="first_name"
+            <Input name="firstName"
                 type="text"
                 placeholder="First Name"
-                value={formData.first_name}
+                value={formData.firstName}
                 onChange={handleChange}
             />
           </FormGroup>
           <FormGroup>
             <Label for="type">Last Name:</Label>
-            <Input name="last_name"
+            <Input name="lastName"
                 type="text"
                 placeholder="Last Name"
-                value={formData.last_name}
+                value={formData.lastName}
                 onChange={handleChange}
             />
           </FormGroup>

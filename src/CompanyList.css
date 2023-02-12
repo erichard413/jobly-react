@@ -11,3 +11,32 @@
     text-decoration: none;
     color: black;
 }
+
+.CompanyList-search {
+    display: inline-block;
+    text-align: center;
+    width: 100%;
+}
+
+.CompanyList-search form {
+    display: inline-block;
+    margin-top: 10px;
+    width: 100%;
+}
+.CompanyList-search .mb-3 {
+    display: inline-block;
+    width: 50%;
+    margin-bottom: 0px;
+}
+.CompanyList-search input {
+    display: inline-block;
+    margin-top: 5px;
+}
+.CompanyList-search button {
+    display: inline-block;
+    padding-top: 6px;
+    margin-left: .2%;
+    margin-top: 0px;
+    margin-bottom: 2px;
+    width: 4.8%
+}

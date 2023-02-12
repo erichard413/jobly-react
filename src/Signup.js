@@ -1,9 +1,14 @@
 import React from 'react';
+import SignUpForm from './SignUpForm';
+import './Signup.css';
 
 const Signup = () => {
     return (
         <div className="Signup">
-            <h1>I AM THE SIGNUP PAGE!</h1>
+            <div className="Signup-container">
+                <h1>Sign Up</h1>
+                <SignUpForm />
+            </div>
         </div>
     )
 }

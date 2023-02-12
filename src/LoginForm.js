@@ -1,4 +1,6 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
+import {useNavigate} from 'react-router-dom';
+
 import {
     Button,
     Form,
@@ -7,7 +9,11 @@ import {
     Label,
   } from 'reactstrap';
 
-const LoginForm = () => {
+const LoginForm = ({login}) => {
+    const initialFlash = ""
+    const [flashMsg, setFlashMsg] = useState(initialFlash);
+
+    const navigate = useNavigate();
     const initialState = {
         username: "",
         password: "",
@@ -23,12 +29,24 @@ const LoginForm = () => {
     }
 
     const handleSubmit = (e) => {
-        alert(`Cannot log in user ${formData.username}, functionality has not been implemented yet!`)
-        setFormData(initialState);
+      e.preventDefault();
+      const doLogin = async()=>{
+        let res = await login(formData.username, formData.password)
+        if (res) {
+          navigate('/', {replace:true})
+        }
+        if (!res) {
+          setFlashMsg('Invalid username/password combo!');
+          setTimeout(()=> {setFlashMsg(initialFlash)}, 2500)
+        }
+      }
+      doLogin();
     }
+      
 
     return (
         <div className="LoginForm">
+        {flashMsg && <p className="LoginForm-flash"><strong>{flashMsg}</strong></p>}
         <Form className="form">
           <FormGroup>
             <Label for="type">Username:</Label>
@@ -43,14 +61,14 @@ const LoginForm = () => {
           <FormGroup>
             <Label for="type">Password:</Label>
             <Input name="password"
-                type="text"
+                type="password"
                 placeholder="Password"
                 value={formData.password}
                 onChange={handleChange}
             />
           </FormGroup>
 
-        <Button onClick={handleSubmit}>Login</Button>
+        <Button type="submit" onClick={handleSubmit}>Login</Button>
       </Form>
         </div>
     )
